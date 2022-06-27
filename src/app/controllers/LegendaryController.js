@@ -1,16 +1,10 @@
-const LegendaryModel = require('../models/LegendaryModel');
+import LegendaryModel from "../models/LegendaryModel.js";
 
-const controller = {
-  index: (request, response) => {
-    const pokemon = new LegendaryModel(
-      1,
-      'MewTwo',
-      'Descrição',
-      'pokemon'
-    )
-
-    response.json(pokemon)
+class LegendaryController {
+  index(req, res) {
+    const pokemon = new LegendaryModel(1, "MewTwo", "Descrição", "pokemon");
+    res.json(pokemon);
   }
 }
 
-module.exports = controller;
+export default new LegendaryController();

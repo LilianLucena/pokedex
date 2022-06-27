@@ -1,9 +1,7 @@
-const Router = require('express');
-
-const controller = require('./app/controllers/LegendaryController');
-
+import { Router } from "express";
+import LegendaryController from "./app/controllers/LegendaryController.js";
 const routes = new Router();
 
-routes.get('/legendaries', controller.index)
+routes.get("/legendaries", LegendaryController.index);
 
-module.exports = routes;
+export default routes;
