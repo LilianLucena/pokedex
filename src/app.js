@@ -1,5 +1,8 @@
-const express = require('express');
-const routes = require('./routes');
+import express from "express";
+import db from "./database";
+import routes from "./routes";
+
+
 
 class App {
   constructor() {
@@ -10,12 +13,21 @@ class App {
   }
 
   middlewares() {
-    this.server.use(express.json())
+    this.server.use(express.json());
   }
 
   routes() {
-    this.server.use(routes)
+    this.server.use(routes);
   }
-}
 
-module.exports = new App().server;
+  async initializeDatabase() {
+    try{
+      await db.authenticate();
+      console.log("conexão com o banco de dados realizada com sucesso");
+    } catch(error) {
+      console.log("Não foi possível conecatr ao banco de dados:", error.message
+      );
+}
+}
+}
+export default new App().server;
